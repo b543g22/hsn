@@ -2,11 +2,15 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Models\Member;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Member::class, function (Faker $faker) {
     return [
-        //
+        'name' => $faker->name,
+        'email' => $faker->email,
+        'password' => $faker->password
+
+
     ];
 });

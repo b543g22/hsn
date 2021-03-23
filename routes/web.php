@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//最初の画面はログイン画面
+Route::get('/', 'AuthController@showLogin')->name('showLogin');
+
+//ログイン処理
+Route::post('login', 'AuthController@login')->name('login');
