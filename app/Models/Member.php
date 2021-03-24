@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
-{
+class Member extends Model {
     // テーブル名
     protected $table = 'members';
 

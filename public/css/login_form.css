@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+.home {
+    text-align: center;
+}
+
+ul li {
+    list-style: none;
+}
+
+.text {
+    width: 250px;
+    height: 33px;
+}
+
+.button {
+    width: 258px;
+    height: 40px;
+    margin-top: 10px;
+    background    : rgba(0, 127, 255, 0.67);
+    color: white;
+    font-size     : 15px; 
+    border-radius: 5px;
+}
+.button:hover {
+    cursor        : pointer;
+    background    : rgba(0, 81, 255, 0.644);
+  }
+
+h1 {
+    font-size: 50px;
+}
+
+footer {
+    height: 100px;
+    background-color: #174a5c;
+    text-align: center;
+    color: white;
+    position: absolute; /*ここを変更*/
+    bottom: 0;
+    width: 100%;
+}
+
+.alert ul li {
+    color: red;
+}
