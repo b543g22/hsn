@@ -16,7 +16,7 @@
             <li>名前：{{Auth::user()->name}}</li>
             <li>メールアドレス：{{Auth::user()->email}}</li>
         </ul>
-        <form action="{{route('logout')}}" method="POST">
+        <form action="{{route('logout.exe')}}" method="POST">
         @csrf
         <button class="btn btn-danger">ログアウト</button>
         </form>

@@ -28,7 +28,7 @@
             {{session('logout')}}
         </div>
     @endif
-    <form class="loginform" method="POST" action="{{route('login')}}">
+    <form class="loginform" method="POST" action="{{route('login.exe')}}">
     @csrf
     <ul>
     <li><input type="email" name="email" placeholder="Email address" class="text"></li>
@@ -36,9 +36,7 @@
     <li><input type="submit" value="ログイン" class="button"></li>
     </ul>
     </form>
+    <a href="{{route('userCreate.show')}}">ユーザ新規登録</a>
 </div>
-    <footer>
-            <p>©2021 I.K</p>
-    </footer>
 </body>
 </html>
