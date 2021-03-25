@@ -15,10 +15,10 @@ class CreateMembersTable extends Migration
     {
         if(!Schema::hasTable('members')) {
             Schema::create('members', function (Blueprint $table) {
-                $table->bigIncrements('member_id',10);
+                $table->bigIncrements('id',10);
                 $table->string('name', 50);
                 $table->string('email')->unique();
-                $table->string('password', 20);
+                $table->string('password');
                 $table->timestamps();
             });
         }

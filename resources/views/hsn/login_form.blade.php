@@ -17,6 +17,17 @@
             </ul>
         </div>
     @endif
+
+    @if(session('login_error'))
+        <div class="alert alert-success">
+            {{session('login_error')}}
+        </div>
+    @endif
+    @if(session('logout'))
+        <div class="alert alert-success">
+            {{session('logout')}}
+        </div>
+    @endif
     <form class="loginform" method="POST" action="{{route('login')}}">
     @csrf
     <ul>
