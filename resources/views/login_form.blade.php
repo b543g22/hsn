@@ -28,6 +28,11 @@
             {{session('logout')}}
         </div>
     @endif
+    @if(session('userCreateSuccess'))
+        <div class="alert alert-success">
+            {{session('userCreateSuccess')}}
+        </div>
+    @endif
     <form class="loginform" method="POST" action="{{route('login.exe')}}">
     @csrf
     <ul>

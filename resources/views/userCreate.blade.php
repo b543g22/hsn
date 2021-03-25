@@ -35,6 +35,7 @@
     <input type="password" name="password">
     </p>
     <p>
+    <label for="password.confirmation"><br></label>
     <input type="password" name="password.confirmation" placeholder="確認のため、もう一度入力してください">
     </p>
     <p>

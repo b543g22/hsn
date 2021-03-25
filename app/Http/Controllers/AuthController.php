@@ -7,6 +7,7 @@ use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\UserStoreRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Member;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller {
     /**
@@ -50,9 +51,8 @@ class AuthController extends Controller {
      * @return view
      */
     public function exeUserStore(UserStoreRequest $request) {
-        // $inputs = $request->only('name','email','password');
-        $inputs = $request->all();
-        dd($inputs);
+        $inputs = $request->only('name','email','password');
+        $inputs['password'] = Hash::make($inputs['password']);
         \DB::beginTransaction();
         try {
         Member::create($inputs);
@@ -61,6 +61,6 @@ class AuthController extends Controller {
             \DB::rollback();
             abort(500);
         }
-        return redirect()->route('login.show');
+        return redirect()->route('login.show')->with('userCreateSuccess','ユーザー登録が完了しました！');
     }
 }

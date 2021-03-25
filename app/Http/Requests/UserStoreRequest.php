@@ -27,19 +27,18 @@ class UserStoreRequest extends FormRequest
             'name' => 'required|max:50',
             'email' => 'required|max:191',
             'password' => 'required|confirmed',
-            'password.confirmation' => 'required'
         ];
     }
 
     /**
- * 定義済みバリデーションルールのエラーメッセージ取得
- *
- * @return array
- */
-public function messages()
-{
-    return [
-        'password.confirmed' => '確認用パスワードと一致していません',
-    ];
-}
-}
+     * 定義済みバリデーションルールのエラーメッセージ取得
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'password.confirmed' => '確認用パスワードと一致していません',
+        ];
+    }
+    }
