@@ -6,6 +6,11 @@
 </head>
 <body>
     <div>
+    
+    </div>
+
+
+    <!-- <div>
       @if(session('login_success'))
         <div class="alert alert-success">
             {{session('login_success')}}
@@ -20,6 +25,6 @@
         @csrf
         <button class="btn btn-danger">ログアウト</button>
         </form>
-    </div>
+    </div> -->
 </body>
 </html>
