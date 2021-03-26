@@ -31,10 +31,16 @@ Route::group(['middleware' => ['guest']], function () {
 
 
 Route::group(['middleware' => ['auth']], function () {
-    //一覧画面
-    Route::get('list',function() {
-        return view('hsn.list');
-    })->name('list.show');
+    //配信曲一覧画面
+    Route::get('list','HsnController@showList')->name('list.show');
+
+    //配信曲詳細画面
+    Route::get('/list/{song_id}','HsnController@showDetail')->name('detail.show');
+
+    //配信曲詳細編集画面
+    Route::get('/list/{song_id}/edit','HsnController@showEdit')->name('edit.show');
+    //配信曲詳細編集処理
+    Route::post('/list/update','HsnController@exeUpdate')->name('update.exe');
 
     //ログアウト
     Route::post('logout','AuthController@exeLogout')->name('logout.exe');

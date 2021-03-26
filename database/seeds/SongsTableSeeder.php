@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Member;
+use App\Models\Song;
 
-class MembersTableSeeder extends Seeder
+class SongsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class MembersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Member::class, 10)->create();
+        factory(Song::class, 3)->create();
     }
 }

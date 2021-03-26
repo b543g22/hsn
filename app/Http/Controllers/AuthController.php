@@ -7,6 +7,8 @@ use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\UserStoreRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Member;
+use App\Models\Song;
+use App\Models\Artist;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller {
