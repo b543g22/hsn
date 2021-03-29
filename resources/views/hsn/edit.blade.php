@@ -16,9 +16,9 @@
         <select name="artist_id">
             @foreach($artists as $artist)
             @if($list->artist_id === $artist->artist_id)
-            <option value="{{$artist->artist_id}}" selected>{{$artist->artist_name}}</option>
+                <option value="{{$artist->artist_id}}" selected>{{$artist->artist_name}}</option>
             @else
-            <option value="{{$artist->artist_id}}">{{$artist->artist_name}}</option>
+                <option value="{{$artist->artist_id}}">{{$artist->artist_name}}</option>
             @endif
             @endforeach
         </select><br>
@@ -27,7 +27,7 @@
         <input type="submit" value="更新">
         </form>
     </div>
-    <a href="/list/{{$list->song_id}}">キャンセル</a>
+    <a href="{{route('detail.show',['song_id' => $list->song_id])}}">キャンセル</a>
 </body>
 </html>
 <script>

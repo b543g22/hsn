@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="home">
-        <h1>Music Stream System</h1>
+        <h1>Music System</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

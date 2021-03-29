@@ -31,16 +31,33 @@ Route::group(['middleware' => ['guest']], function () {
 
 
 Route::group(['middleware' => ['auth']], function () {
-    //配信曲一覧画面
-    Route::get('list','HsnController@showList')->name('list.show');
-
-    //配信曲詳細画面
+    //曲一覧画面
+    Route::get('/list','HsnController@showList')->name('list.show');
+    //曲詳細画面
     Route::get('/list/{song_id}','HsnController@showDetail')->name('detail.show');
-
-    //配信曲詳細編集画面
+    //曲編集画面
     Route::get('/list/{song_id}/edit','HsnController@showEdit')->name('edit.show');
-    //配信曲詳細編集処理
+    //曲更新処理
     Route::post('/list/update','HsnController@exeUpdate')->name('update.exe');
+    //曲登録画面
+    Route::get('/list/create', 'HsnController@showSongCreate')->name('songCreate.show');
+    //曲登録処理
+    Route::post('/list/store','HsnController@exeSongStore')->name('songStore.exe');
+
+    //アーティスト一覧画面
+    Route::get('/artist','HsnController@showArtistList')->name('artistList.show');
+    //アーティスト詳細画面
+    Route::get('/artist/{artist_id}','HsnController@showArtistDetail')->name('artistDetail.show');
+    //アーティスト編集画面
+    Route::get('/artist/{artist_id}/edit','HsnController@showArtistEdit')->name('artistEdit.show');
+    //アーティスト更新処理
+    Route::post('/artist/update','HsnController@exeArtistUpdate')->name('artistUpdate.exe');
+    //アーティスト登録画面
+    Route::get('/artist/create',function() {
+        return view('hsn.artistCreate');
+    })->name('artistCreate.show');
+    //アーティスト登録処理
+    Route::post('/artist/store','HsnController@exeArtistStore')->name('artistStore.exe');
 
     //ログアウト
     Route::post('logout','AuthController@exeLogout')->name('logout.exe');

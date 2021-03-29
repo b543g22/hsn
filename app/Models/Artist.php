@@ -11,7 +11,8 @@ class Artist extends Model {
     protected $primaryKey = "artist_id";
     //可変項目
     protected $fillable = [
-        'artist_name'
+        'artist_name',
+        'artist_image'
     ];
 
     //結合:songテーブル hasMany
