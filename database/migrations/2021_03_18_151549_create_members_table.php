@@ -18,6 +18,7 @@ class CreateMembersTable extends Migration
                 $table->string('name', 50);
                 $table->string('email')->unique();
                 $table->string('password');
+                $table->char('updkbn',1);
                 $table->timestamps();
             });
         }

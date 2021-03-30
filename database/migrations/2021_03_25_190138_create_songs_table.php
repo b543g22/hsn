@@ -19,6 +19,7 @@ class CreateSongsTable extends Migration
                 $table->text('lyrics');
                 $table->integer('artist_id')->unsigned();
                 $table->foreign('artist_id')->references('artist_id')->on('artists');
+                $table->char('updkbn',1);
                 $table->timestamps();
             });
         }

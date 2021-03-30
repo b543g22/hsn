@@ -17,6 +17,16 @@
         <a>{{$list->lyrics}}<br></a>
     </div>
     <button type="button" onclick='location.href="/list/{{$list->song_id}}/edit"'>編集</button><br>
+    <button type="button" onclick='location.href="/list/{{$list->song_id}}/delete"'>削除</button><br>
     <a href="{{route('list.show')}}">一覧へ戻る</a>
 </body>
 </html>
+<script>
+function checkSubmit() {
+    if(window.confirm('削除してよろしいですか？')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>

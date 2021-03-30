@@ -12,7 +12,8 @@ class Artist extends Model {
     //可変項目
     protected $fillable = [
         'artist_name',
-        'artist_image'
+        'artist_image',
+        'updkbn'
     ];
 
     //結合:songテーブル hasMany

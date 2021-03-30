@@ -37,12 +37,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/list/{song_id}','HsnController@showDetail')->name('detail.show');
     //曲編集画面
     Route::get('/list/{song_id}/edit','HsnController@showEdit')->name('edit.show');
+    //曲削除処理
+    Route::get('/list/{song_id}/delete','HsnController@exeSongDelete')->name('songDelete.exe');
     //曲更新処理
-    Route::post('/list/update','HsnController@exeUpdate')->name('update.exe');
+    Route::post('/songUpdate','HsnController@exeUpdate')->name('update.exe');
     //曲登録画面
-    Route::get('/list/create', 'HsnController@showSongCreate')->name('songCreate.show');
+    Route::get('/songCreate', 'HsnController@showSongCreate')->name('songCreate.show');
     //曲登録処理
-    Route::post('/list/store','HsnController@exeSongStore')->name('songStore.exe');
+    Route::post('/songStore','HsnController@exeSongStore')->name('songStore.exe');
 
     //アーティスト一覧画面
     Route::get('/artist','HsnController@showArtistList')->name('artistList.show');
@@ -50,14 +52,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/artist/{artist_id}','HsnController@showArtistDetail')->name('artistDetail.show');
     //アーティスト編集画面
     Route::get('/artist/{artist_id}/edit','HsnController@showArtistEdit')->name('artistEdit.show');
+    //アーティスト削除処理
+    Route::get('/artist/{artist_id}/delete','HsnController@exeArtistDelete')->name('artistDelete.exe');
     //アーティスト更新処理
-    Route::post('/artist/update','HsnController@exeArtistUpdate')->name('artistUpdate.exe');
+    Route::post('/artistUpdate','HsnController@exeArtistUpdate')->name('artistUpdate.exe');
     //アーティスト登録画面
-    Route::get('/artist/create',function() {
+    Route::get('/artistCreate',function() {
         return view('hsn.artistCreate');
     })->name('artistCreate.show');
     //アーティスト登録処理
-    Route::post('/artist/store','HsnController@exeArtistStore')->name('artistStore.exe');
+    Route::post('/artistStore','HsnController@exeArtistStore')->name('artistStore.exe');
 
     //ログアウト
     Route::post('logout','AuthController@exeLogout')->name('logout.exe');

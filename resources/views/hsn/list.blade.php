@@ -17,6 +17,11 @@
             {{session('err_msg')}}
         </p>
     @endif
+    @if(session('success_msg'))
+        <p class="text-danger">
+            {{session('success_msg')}}
+        </p>
+    @endif
     <table>
         <tr>
             <th>曲番号</th>

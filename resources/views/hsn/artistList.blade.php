@@ -12,6 +12,11 @@
             {{session('err_msg')}}
         </p>
     @endif
+    @if(session('success_msg'))
+        <p class="text-danger">
+            {{session('success_msg')}}
+        </p>
+    @endif
     <div>
     <table>
         <tr>
@@ -26,5 +31,6 @@
         @endforeach
     </table>
     </div>
+    <a href="{{route('artistCreate.show')}}">新規登録</a>
 </body>
 </html>

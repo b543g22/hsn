@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:100',
+            'song_title' => 'required|max:100',
             'artist_id' => 'required|max:10',
             'lyrics' => 'required'
         ];

@@ -55,6 +55,7 @@ class AuthController extends Controller {
     public function exeUserStore(UserStoreRequest $request) {
         $inputs = $request->only('name','email','password');
         $inputs['password'] = Hash::make($inputs['password']);
+        $inputs['updkbn'] = 'A';
         \DB::beginTransaction();
         try {
         Member::create($inputs);

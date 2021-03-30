@@ -14,7 +14,8 @@ class Song extends Model {
     protected $fillable = [
         'song_title',
         'lyrics',
-        'artist_id'
+        'artist_id',
+        'updkbn'
     ];
 
     //結合：artistsテーブル belongsTo

@@ -13,6 +13,7 @@ class Member extends Authenticatable {
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'updkbn'
     ];
 }

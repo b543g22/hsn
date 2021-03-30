@@ -6,6 +6,11 @@
     <title>アーティスト詳細</title>
 </head>
 <body>
+    @if(session('err_msg'))
+        <p class="text-danger">
+            {{session('err_msg')}}
+        </p>
+    @endif
     <div>
     <table>
         <tr>
@@ -23,6 +28,7 @@
         </tr>
     </table>
     <button type="button" onclick='location.href="/artist/{{$artist->artist_id}}/edit"'>編集</button><br>
+    <button type="button" onclick='location.href="/artist/{{$artist->artist_id}}/delete"'>削除</button><br>
     <a href="{{route('artistList.show')}}">一覧へ戻る</a>
     </div>
 </body>

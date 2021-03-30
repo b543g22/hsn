@@ -10,8 +10,8 @@
         <form method="POST" action="{{route('update.exe')}}" onSubmit="return checkSubmit()">
         @csrf
         <input type="hidden" name="song_id" value="{{$list->song_id}}">
-        <label for="title">曲名<br></label>
-        <input type="text" name="title" value="{{$list->song_title}}"><br>
+        <label for="song_title">曲名<br></label>
+        <input type="text" name="song_title" value="{{$list->song_title}}"><br>
         <label for="artist_id">アーティスト<br></label>
         <select name="artist_id">
             @foreach($artists as $artist)

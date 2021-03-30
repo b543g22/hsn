@@ -17,6 +17,7 @@ class CreateArtistsTable extends Migration
                 $table->Increments('artist_id',10);
                 $table->string('artist_name',50);
                 $table->string('artist_image')->nullable();
+                $table->char('updkbn',1);
                 $table->timestamps();
             });
         }
