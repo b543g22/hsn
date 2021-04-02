@@ -19,6 +19,7 @@ class HsnController extends Controller {
         ->join('songs','songs.artist_id','=','artists.artist_id')
         ->where('artists.updkbn','<>','D')
         ->where('songs.updkbn','<>','D')
+        ->orderBy('songs.song_id')
         ->get();
 
         return view('hsn.list',['lists' => $list]);
@@ -156,6 +157,7 @@ class HsnController extends Controller {
     public function showArtistList() {
         $list = Artist::select()
                 ->where('updkbn','<>','D')
+                ->orderBy('artist_id')
                 ->get();
         
         return view('hsn.artistList',['lists' => $list]);

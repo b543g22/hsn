@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+body {
+    margin: 0;
+}
+
+.header_contents {
+    /* background-color: #222222; */
+    background-color: #0d1217;
+    margin:0;
+    width: 100vw;
+}
+
+.global {
+    display: flex;
+    position: fixed;
+    margin: 0;
+    height: 100vh;
+    width: 10vw;
+}
+
+.nav_contents {
+    background-color:#111922;
+    height: 100vh;
+    width: 12vw;
+    border-style: solid solid none none;
+    border-width: 1px;
+    margin: 0;
+}
+
+.main_contents {
+    background-color:#f7fafd;
+    height: 100vh;
+    width: 90vw;
+    padding-top: 10px;
+    padding-left:40px;
+    margin: 0;
+}

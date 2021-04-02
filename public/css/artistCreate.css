@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+.artistCreate {
+    background-color:white;
+    width: 95%;
+    height: 91%;
+    padding: 12px 12px 12px 12px;
+}
+
+label {
+    color: #c7cacc;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+#artist_name {
+    border-bottom: 1px solid;
+    
+}
+
+#store {
+    background-color: #1abc9c;
+    text-decoration: none;
+    color: #eaedf0;
+    text-align:center;
+    border-radius: 5px;
+    padding-top: 4px;
+    margin-left: 0;
+    margin-top: 10px;
+    font-size: 15px;
+    display: block;
+    width: 45px;
+}
+
+#artist_name:focus {
+    outline-color: transparent;
+    outline-style: none;
+}

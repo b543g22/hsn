@@ -1,32 +1,26 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>配信曲詳細</title>
-</head>
-<body>
+@extends('layout')
+@section('title','曲詳細')
+@section('css','/css/songDetail.css')
+@section('content')
     @if(session('update_success'))
         <p>
             {{session('update_siccess')}}
         </p>
     @endif
-    <div>
-        <h2>{{$list->song_title}}</h2> 
-        <a>{{$list->artist_name}}<br></a>
-        <a>{{$list->lyrics}}<br></a>
+    <div class="songDetail">
+        <div class="songDetail_menu">
+        <a href="{{route('edit.show',['song_id' => $list->song_id])}}">編集</a>
+        <a href="{{route('songDelete.exe',['song_id' => $list->song_id])}}">削除</a>
+        </div>
+        <p class="title"><span>曲No</span></p>
+        <p>{{$list->song_id}}</p><hr>
+        <p class="title"><span>タイトル</span></p>
+        <p>{{$list->song_title}}</p><hr>
+        <p class="title"><span>アーティスト</span></p>
+        <p>{{$list->artist_name}}</p><hr>
+        <p class="title"><span>歌詞</span></p>
+        <p>{{$list->lyrics}}</p><hr>
     </div>
-    <button type="button" onclick='location.href="/list/{{$list->song_id}}/edit"'>編集</button><br>
-    <button type="button" onclick='location.href="/list/{{$list->song_id}}/delete"'>削除</button><br>
-    <a href="{{route('list.show')}}">一覧へ戻る</a>
-</body>
-</html>
-<script>
-function checkSubmit() {
-    if(window.confirm('削除してよろしいですか？')) {
-        return true;
-    } else {
-        return false;
-    }
-}
-</script>
+    <a class="ichiran" href="{{route('list.show')}}">一覧へ戻る</a>
+
+@endsection

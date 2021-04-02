@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+.artistList {
+    background-color:white;
+    width: 95%;
+    height: 93%;
+    padding: 12px 12px 12px 12px;
+}
+.artistList_table {
+    border-collapse: collapse;
+    background-color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.artistList_table tr th {
+    color: #1d2b39;
+    background-color: white;
+    text-align: left;
+    border-bottom: 1px #f2f2f2 solid;
+    font-size: 15px;
+}
+
+.artistList_table tr td {
+    color: #1d2b39;
+    font-size: 20px;
+    border-bottom: 1px #f2f2f2 solid;
+}
+
+.artistList_table tr td a {
+    text-decoration: none;
+    color: #16212c;
+    display: block;
+    width: 100%;
+}
+
+.artistList_table tr:nth-child(odd) {
+    background-color:#eaedf0;
+}
+
+.artistList_head {
+    display: flex;
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.artistList_head a {
+    background-color: #1abc9c;
+    text-decoration: none;
+    color: #eaedf0;
+    text-align:center;
+    border-radius: 5px;
+    padding-top: 4px;
+    margin-left: 15px;
+    font-size: 15px;
+    display: block;
+    width: 45px;
+}

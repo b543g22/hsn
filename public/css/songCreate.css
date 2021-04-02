@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+.songCreate {
+    background-color:white;
+    width: 95%;
+    height: 91%;
+    padding: 12px 12px 12px 12px;
+}
+
+label {
+    color: #c7cacc;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+#song_title {
+    border-bottom: 1px solid;
+    
+}
+
+#artist_id {
+    content: '';
+    margin-bottom: 20px;
+	padding: 7px 30px 7px 10px;
+	font-size: 93%;
+	line-height: 1.1em;
+	border-radius: 5px;
+	border: none;
+	background-image: url(../images/icon_arrow.svg);
+	background-repeat: no-repeat;
+	background-size: 12px 10px;
+	background-position: right 10px center;
+    border-style: solid;
+    border-width: 1px;
+    width: 200px;
+}
+
+#lyrics {
+    border-style: solid;
+    border-width: 1px;
+}
+
+#store {
+    background-color: #1abc9c;
+    text-decoration: none;
+    color: #eaedf0;
+    text-align:center;
+    border-radius: 5px;
+    padding-top: 4px;
+    margin-left: 0;
+    margin-top: 10px;
+    font-size: 15px;
+    display: block;
+    width: 45px;
+}
+
+#song_title:focus, #lyrics:focus, #artist_id:focus {
+    outline-color: transparent;
+    outline-style: none;
+}

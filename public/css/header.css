@@ -1,0 +1,47 @@
+@charset "UTF-8";
+.header {
+    display: flex;
+}
+.header .title p{
+    color:#d6d9db;
+    padding-left: 47px;
+    padding-top: 15px;
+    font-weight: bold;
+}
+
+.logout {
+    margin: 15px 10px 0 20px;
+    padding-left: 40px;
+}
+
+.logout_button {
+    border:none;
+    background-color:transparent;
+    color:#d6d9db;
+    font-size: 15px;
+}
+
+.logout_button span {
+    color: #d6d9db;
+}
+
+.logout_button:hover {
+    cursor: pointer;
+}
+
+.username {
+    margin : 9px 10px 9px auto;
+    border-color: #d6d9db;
+    border-right: 10px;
+}
+
+.username span {
+    color: #d6d9db;
+    margin-left: 10px;
+}
+
+.username i {
+    color: #FFABCE;
+    font-size: 28px;
+    font-weight: lighter;
+}

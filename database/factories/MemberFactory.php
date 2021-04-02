@@ -10,7 +10,7 @@ $factory->define(Member::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => Hash::make('Gq999dwe')
+        'password' => Hash::make('password')
 
 
     ];
