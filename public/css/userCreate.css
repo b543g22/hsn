@@ -1,0 +1,67 @@
+body {
+    font-family: Roboto;
+    background: #2b3640;
+}
+
+.userCreate {
+    width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 15em;
+}
+
+#name,#email, #password,#password_confirmation {
+    width: 100%;
+    padding: 1em 0 12px;
+    padding-left: 0;
+    background: none;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 400;
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+label {
+    display: block;
+    text-align: left;
+    color: white;
+    font-size: .875em;
+    margin-top: 10px;
+}
+
+:focus {
+    outline-color: transparent;
+    outline-style: none;
+}
+
+#create {
+    color: white;
+    background: #1abc9c;
+    padding: 1em 1.4em;
+    font-size: 1.2em;
+    border:none;
+    border-radius: 10px;
+
+}
+
+#create:hover {
+    cursor: pointer;    
+}
+
+.err {
+    color:red;
+}
+
+.form-bottom{
+    margin-top:1.25em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a {
+    color: #3599FF;
+    font-size: 1em;
+    text-decoration: none;
+}

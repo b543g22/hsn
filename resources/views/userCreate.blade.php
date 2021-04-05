@@ -4,44 +4,40 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{csrf_token()}}">
     <title>ユーザー登録画面</title>
+    <link rel="stylesheet" href="/css/userCreate.css">
 </head>
 <body>
+    <div class="userCreate">
     <form method="POST" action="{{route('userStore.exe')}}">
     @csrf
     @if ($errors->has('name'))
-        <div class="text-danger">
+        <div class="err">
             {{ $errors->first('name') }}
         </div>
     @endif
-    <p>
-    <label for="name">名前<br></label>
-    <input type="text" name="name">
-    </p>
+    <label for="name">Name<br></label>
+    <input type="text" id="name" name="name">
     @if ($errors->has('email'))
-        <div class="text-danger">
+        <div class="err">
             {{ $errors->first('email') }}
         </div>
     @endif
-    <p>
-    <label for="email">メールアドレス<br></label>
-    <input type="email" name="email">
-    </p>
+    <label for="email">Email address<br></label>
+    <input type="email" id="email" name="email">
     @if ($errors->has('password'))
-        <div class="text-danger">
+        <div class="err">
             {{ $errors->first('password') }}
         </div>
     @endif
-    <p>
-    <label for="password">パスワード<br></label>
-    <input type="password" name="password">
-    </p>
-    <p>
+    <label for="password">Password<br></label>
+    <input type="password" id="password" name="password">
     <label for="password.confirmation"><br></label>
-    <input type="password" name="password.confirmation" placeholder="確認のため、もう一度入力してください">
-    </p>
-    <p>
-    <input type="submit" value="新規登録">
-    </p>
+    <input type="password" name="password.confirmation" id="password_confirmation" placeholder="確認のため、もう一度入力してください">
+    <div class="form-bottom">
+    <input type="submit" id="create" value="新規登録">
+    <a href="{{route('login.show')}}">キャンセル</a>
+    </div>
     </form>
+    </div>
 </body>
 </html>
