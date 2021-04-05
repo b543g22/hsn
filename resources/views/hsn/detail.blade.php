@@ -9,8 +9,12 @@
     @endif
     <div class="songDetail">
         <div class="songDetail_menu">
-        <a href="{{route('edit.show',['song_id' => $list->song_id])}}">編集</a>
-        <a href="{{route('songDelete.exe',['song_id' => $list->song_id])}}">削除</a>
+        <a href="{{route('edit.show',[
+            'song_id' => $list->song_id
+        ])}}">編集</a>
+        <a href="{{route('songDelete.exe',[
+            'song_id' => $list->song_id
+        ])}}">削除</a>
         </div>
         <p class="title"><span>曲No</span></p>
         <p>{{$list->song_id}}</p><hr>

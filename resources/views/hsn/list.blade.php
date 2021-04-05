@@ -28,7 +28,9 @@
             <tr>
                 <td>{{$list->song_id}}</td>
                 <td>{{$list->artist_name}}</td>
-                <td><a href="{{route('detail.show',['song_id' => $list->song_id])}}">{{$list->song_title}}</a></td>
+                <td><a href="{{route('detail.show',[
+                    'song_id' => $list->song_id
+                ])}}">{{$list->song_title}}</a></td>
             </tr>
             @endforeach
         </table>

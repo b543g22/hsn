@@ -19,15 +19,18 @@ class AuthController extends Controller {
      * @return
      */
     public function exeLogin(LoginFormRequest $request) {
+
        $credentials = $request->only('email','password');
 
        if(Auth::attempt($credentials)) {
-           $request->session()->regenerate();
-           return redirect()->route('list.show')->with('login_success','ログイン成功しました！');
+        $request->session()->regenerate();
+        return redirect()
+            ->route('list.show')
+            ->with('login_success',config('const.login_success'));
 
-       }
+       }   
        return back()->withErrors([
-           'login_error' => 'メールアドレスかパスワードが間違っています。'
+        'login_error' => config('const.login_error')
        ]);
     }
 
@@ -43,7 +46,9 @@ class AuthController extends Controller {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         
-        return redirect()->route('login.show')->with('logout','ログアウトしました！');
+        return redirect()
+            ->route('login.show')
+            ->with('logout',config('const.logout'));
     }
 
     /**
@@ -56,14 +61,9 @@ class AuthController extends Controller {
         $inputs = $request->only('name','email','password');
         $inputs['password'] = Hash::make($inputs['password']);
         $inputs['updkbn'] = 'A';
-        \DB::beginTransaction();
-        try {
-        Member::create($inputs);
-        \DB::commit();
-        } catch(\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
-        return redirect()->route('login.show')->with('userCreateSuccess','ユーザー登録が完了しました！');
+        Member::createMember($inputs);
+        return redirect()
+            ->route('login.show')
+            ->with('userCreateSuccess',config('const.userCreate_success'));
     }
 }

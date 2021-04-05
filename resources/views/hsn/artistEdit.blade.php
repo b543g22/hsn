@@ -12,6 +12,8 @@
     <input type="file" name="artist_image" id="artist_image"><br>
     <input type="submit" id="update" value="更新">
 </form>
-<a href="{{route('artistDetail.show',['artist_id' => $artist->artist_id])}}">キャンセル</a>
+<a href="{{route('artistDetail.show',[
+    'artist_id' => $artist->artist_id
+    ])}}">キャンセル</a>
 <!-- <a href="/artist/{{$artist->artist_id}}">キャンセル</a> -->
 @endsection

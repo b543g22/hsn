@@ -26,7 +26,11 @@
             @foreach($lists as $list)
             <tr>
                 <td>{{$list->artist_id}}</td>
-                <td><a href="{{route('artistDetail.show',['artist_id' => $list->artist_id])}}">{{$list->artist_name}}</a></td>
+                <td>
+                    <a href="{{route('artistDetail.show',[
+                    'artist_id' => $list->artist_id
+                    ])}}">{{$list->artist_name}}</a>
+                </td>
             </tr>
             @endforeach
         </table>

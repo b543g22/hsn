@@ -15,14 +15,10 @@ class HsnController extends Controller {
      * @return view
      */
     public function showList() {
-        $list = Artist::select()
-        ->join('songs','songs.artist_id','=','artists.artist_id')
-        ->where('artists.updkbn','<>','D')
-        ->where('songs.updkbn','<>','D')
-        ->orderBy('songs.song_id')
-        ->get();
-
-        return view('hsn.list',['lists' => $list]);
+        $list = Song::getShowList();
+        return view('hsn.list',[
+            'lists' => $list
+            ]);
     }
 
     /**
@@ -31,15 +27,15 @@ class HsnController extends Controller {
      * @param int $song_id
      * @return view
      */
-    public function showDetail($song_id){
-        $list = Artist::select()
-        ->join('songs','songs.artist_id','=','artists.artist_id')
-        ->where('songs.song_id','=',$song_id)
-        ->first();
+    public function showDetail(int $song_id){
+        $list = Song::getShowDetail($song_id);
         if(is_null($list)) {
-            return redirect()->route('list.show')->with('err_msg','データがありません');
+            return redirect()
+                ->route('list.show')
+                ->with('err_msg',config('const.no_data'));
         }
-        return view('hsn.detail',['list' => $list]);
+        return view('hsn.detail',[
+            'list' => $list]);
     }
     
     /**
@@ -48,17 +44,20 @@ class HsnController extends Controller {
      * @param int $song_id
      * @return view
      */
-    public function showEdit($song_id) {
-        $list = Artist::select()
-        ->join('songs','songs.artist_id','=','artists.artist_id')
-        ->where('songs.song_id','=',$song_id)
-        ->first();
+    public function showEdit(int $song_id) {
+        $list = Song::getShowDetail($song_id);
         $artists = Artist::all();
 
         if(is_null($list)) {
-            return redirect()->route('list.show')->with('err_msg','データがありません');
+            return redirect()
+                ->route('list.show')
+                ->with('err_msg',config('const.no_data'));
         }
-        return view('hsn.edit',['list' => $list],['artists' => $artists]);
+        return view('hsn.edit',[
+            'list' => $list
+            ],[
+            'artists' => $artists
+            ]);
         
     }
 
@@ -72,24 +71,11 @@ class HsnController extends Controller {
         
         // 更新データを受け取る
         $inputs = $request->all();
-
-        \DB::beginTransaction();
-        try {
-            //songsテーブル更新
-            $song = Song::find($inputs['song_id']);
-            $song->fill([
-                'song_title' => $inputs['song_title'],
-                'lyrics' => $inputs['lyrics'],
-                'artist_id' => $inputs['artist_id'],
-                'updkbn' => 'U'
-            ]);
-            $song->save();
-            \DB::commit();
-        } catch(\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
-        return redirect()->route('detail.show',['song_id' => $inputs['song_id']])->with('update_success','曲情報を更新しまた');
+        Song::exeUpdate($inputs);
+        return redirect()
+            ->route('detail.show',[
+                'song_id' => $inputs['song_id']
+            ])->with('update_success',config('const.songUpdate_success'));
     }
 
     /**
@@ -101,9 +87,13 @@ class HsnController extends Controller {
         $artists = Artist::all();
   
         if(count($artists) <= 0) {
-            return redirect()->route('list.show')->with('err_msg','アーティストが登録されていません');
+            return redirect()
+                ->route('list.show')
+                ->with('err_msg',config('const.no_artist'));
         }
-        return view('hsn.songCreate',['artists' => $artists]);
+        return view('hsn.songCreate',[
+            'artists' => $artists
+            ]);
     }
 
     /**
@@ -114,39 +104,23 @@ class HsnController extends Controller {
      */
     public function exeSongStore(UpdateRequest $request) {
         $inputs = $request->all();
-        $inputs['updkbn'] = 'A';
-        \DB::beginTransaction();
-        try {
-            Song::create($inputs);
-            \DB::commit();
-        } catch(\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
-        return redirect()->route('list.show')->with('success_msg','曲を登録しました');
+        Song::exeStore($inputs);
+        return redirect()
+            ->route('list.show')
+            ->with('success_msg',config('const.songCreate_success'));
     }
 
     /**
      * 曲削除処理
      * 
-     * @param $song_id
+     * @param int $song_id
      * @return view
      */
-    public function exeSongDelete($song_id) {
-
-        \DB::beginTransaction();
-        try {
-            $song = Song::find($song_id);
-            $song->fill([
-                'updkbn' => 'D'
-            ]);
-            $song->save();
-            \DB::commit();
-        } catch(\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
-        return redirect()->route('list.show')->with('success_msg','曲を削除しました');
+    public function exeSongDelete(int $song_id) {
+        Song::exeDelete($song_id);
+        return redirect()
+            ->route('list.show')
+            ->with('success_msg',config('const.songDelete_success'));
     }
 
     /**
@@ -155,29 +129,28 @@ class HsnController extends Controller {
      * @return view
      */
     public function showArtistList() {
-        $list = Artist::select()
-                ->where('updkbn','<>','D')
-                ->orderBy('artist_id')
-                ->get();
-        
-        return view('hsn.artistList',['lists' => $list]);
+        $list = Artist::showList();
+        return view('hsn.artistList',[
+            'lists' => $list
+            ]);
     }
 
     /**
      * アーティスト詳細画面表示
      * 
-     * @param artist_id
+     * @param int artist_id
      * @return view
      */
-    public function showArtistDetail($artist_id) {
-        $artist = Artist::select()
-                ->where('artist_id','=',$artist_id)
-                ->first();
+    public function showArtistDetail(int $artist_id) {
+        $artist = Artist::showDetail($artist_id);
         if(is_null($artist)) {
-            return redirect()->route('artistList.show')->with('error_msg','データがありませんでした');
+            return redirect()
+                ->route('artistList.show')
+                ->with('error_msg',config('const.no_data'));
         }
-
-        return view('hsn.artistDetail',['artist' => $artist]);
+        return view('hsn.artistDetail',[
+            'artist' => $artist
+            ]);
     }
 
     /**
@@ -186,15 +159,16 @@ class HsnController extends Controller {
      * @param artist_id
      * @return view
      */
-    public function showArtistEdit($artist_id) {
-        $artist = Artist::select()
-            ->where('artist_id','=',$artist_id)
-            ->first();
+    public function showArtistEdit(int $artist_id) {
+        $artist = Artist::showDetail($artist_id);
         if(is_null($artist)) {
-            return redirect()->route('artistList.show')->with('error_msg','データがありませんでした');
+            return redirect()
+                ->route('artistList.show')
+                ->with('error_msg',config('const.no_data'));
         }
-
-        return view('hsn.artistEdit',['artist' => $artist]);
+        return view('hsn.artistEdit',[
+            'artist' => $artist
+            ]);
     }
 
     /**
@@ -206,40 +180,14 @@ class HsnController extends Controller {
     public function exeArtistUpdate(ArtistUpdateRequest $request) {
         $inputs = $request->all();
         if(!empty($inputs['artist_image'])) {
-        $inputs['artist_image'] = $inputs['artist_image']->store('public/uploads');
-        dd($inputs);
-        \DB::beginTransaction();
-        try {
-            $artist = Artist::find($inputs['artist_id']);
-            $artist->fill([
-                'artist_name' => $inputs['artist_name'],
-                'artist_image' => $inputs['artist_image'],
-                'updkbn' => 'U'
-            ]);
-            $artist->save();
-            \DB::commit();
-        } catch(\Throwable $e) {
-            \DB::rollback();
-            abort(500);
+            Artist::exeUpdate($inputs);
+        } else {
+            Artist::exeUpdateImg($inputs);
         }
-
-        }
-
-        \DB::beginTransaction();
-        try {
-            $artist = Artist::find($inputs['artist_id']);
-            $artist->fill([
-                'artist_name' => $inputs['artist_name'],
-                'updkbn' => 'U'
-            ]);
-            $artist->save();
-            \DB::commit();
-        } catch(\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
-        
-        return redirect()->route('artistDetail.show',['artist_id' => $inputs['artist_id']])->with('update_success','アーティスト情報を更新しました');
+        return redirect()
+            ->route('artistDetail.show',[
+                'artist_id' => $inputs['artist_id']
+            ])->with('update_success',config('const.artistUpdate_success'));
     }
     
     /**
@@ -250,46 +198,29 @@ class HsnController extends Controller {
      */
     public function exeArtistStore(ArtistUpdateRequest $request) {
         $inputs = $request->all();
-        $inputs['artist_image'] = $inputs['artist_image']->store('public/uploads');
-        $inputs['updkbn'] = 'A';
-        \DB::beginTransaction();
-        try {
-            Artist::create($inputs);
-            \DB::commit();
-        } catch(\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
-        return redirect()->route('artistList.show')->with('success_msg','アーティストを登録しました');
+        Artist::exeStore($inputs);
+        return redirect()
+            ->route('artistList.show')
+            ->with('success_msg',config('const.artistCreate_success'));
     }
 
     /**
      * アーティスト削除処理
      * 
-     * @param $artist_id
+     * @param int $artist_id
      * @return view
      */
-    public function exeArtistDelete($artist_id) {
-        $song = Song::select()
-                ->join('artists','artists.artist_id','=','songs.artist_id')
-                ->where('songs.updkbn','<>','D')
-                ->where('artists.artist_id','=',$artist_id)
-                ->get();
-        if(count($song) > 0) {
-            return redirect()->route('artistDetail.show',['artist_id' => $artist_id])->with('err_msg','対象アーティストの曲が存在するため、削除できませんでした');
+    public function exeArtistDelete(int $artist_id) {
+        $songs = Song::artistSong($artist_id);
+        if(count($songs) > 0) {
+            return redirect()
+            ->route('artistDetail.show',[
+                'artist_id' => $artist_id
+            ])->with('err_msg',config('const.artistDelete_error'));
         }
-        \DB::beginTransaction();
-        try {
-            $artist = Artist::find($artist_id);
-            $artist->fill([
-                'updkbn' => 'D'
-            ]);
-            $artist->save();
-            \DB::commit();
-        } catch(\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
-        return redirect()->route('artistList.show')->with('success_msg','アーティストを削除しました');
+        Artist::exeDelete($artist_id);
+        return redirect()
+        ->route('artistList.show')
+        ->with('success_msg',config('const.artistDelete_success'));
     }
 }

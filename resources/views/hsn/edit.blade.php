@@ -22,5 +22,7 @@
     <textarea name="lyrics" id="lyrics" rows="17" cols="150">{{$list->lyrics}}</textarea><br>
     <input type="submit" id="update" value="更新">
 </form>
-<a href="{{route('detail.show',['song_id' => $list->song_id])}}">キャンセル</a>
+<a href="{{route('detail.show',[
+    'song_id' => $list->song_id
+])}}">キャンセル</a>
 @endsection
