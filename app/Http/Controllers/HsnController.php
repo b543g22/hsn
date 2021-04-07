@@ -124,6 +124,17 @@ class HsnController extends Controller {
     }
 
     /**
+     * 曲予測検索処理
+     * 
+     * @param string $song_name
+     * @return json
+     */
+    public function getSongSearch(string $song_title) {
+        $songs = Song::getSongName($song_title);
+        return response()->json($songs);
+    }
+
+    /**
      * アーティスト一覧画面表示
      * 
      * @return view
@@ -222,5 +233,16 @@ class HsnController extends Controller {
         return redirect()
         ->route('artistList.show')
         ->with('success_msg',config('const.artistDelete_success'));
+    }
+
+    /**
+     * アーティスト予測検索処理
+     * 
+     * @param string $artist_name
+     * @return json
+     */
+    public function getArtistSearch(string $artist_name) {
+        $artists = Artist::getArtistName($artist_name);
+        return response()->json($artists);
     }
 }

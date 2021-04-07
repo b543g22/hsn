@@ -29,8 +29,8 @@
                 </div>
             </main>
         </div>
-</body>
-</html>
+<script type="text/javascript" src="\js\jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="@yield('js')"></script>
 <script>
 function checkSubmit() {
     if(window.confirm('更新してよろしいですか？')) {
@@ -40,3 +40,5 @@ function checkSubmit() {
     }
 }
 </script>
+</body>
+</html>

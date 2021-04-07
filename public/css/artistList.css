@@ -56,3 +56,25 @@
     display: block;
     width: 45px;
 }
+
+.artistList_head form {
+    display: flex;
+    margin-left: 100px;
+}
+
+#search_button {
+    background-color: #1abc9c;
+    text-decoration: none;
+    color: #eaedf0;
+    text-align:center;
+    border-radius: 5px;
+    padding-top: 4px;
+    margin-left: 15px;
+    font-size: 15px;
+    display: block;
+    width: 45px;
+}
+
+#search_artist {
+    border-style: solid;
+}

@@ -120,4 +120,19 @@ class Song extends Model {
             ->get();
         return $songs;
     }
+
+    /**
+     * 曲予測検索用データ
+     * @param string $song_title
+     * @return array $songs
+     */
+    public static function getSongName(string $song_title) {
+        $songs = Song::select()
+            ->join('artists','artists.artist_id','=','songs.artist_id')
+            ->where('songs.updkbn','<>','D')
+            ->where('songs.song_title','like','%'.$song_title.'%')
+            ->orderBy('songs.song_title')
+            ->get();
+        return $songs;
+    }
 }
