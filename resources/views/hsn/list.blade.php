@@ -18,10 +18,12 @@
         <div class="songList_head">
             <h3>曲一覧</h3>
             <a href="{{route('songCreate.show')}}">登録</a>
+            <!-- 非同期処理を用いた検索機能 -->
             <form>
                 <input type="text" id="search_song" name="search_song" placeholder="タイトル">
                 <input type="button" id="search_button" name="search_button" value='検索'>
             </form>
+            <!-- /非同期処理を用いた検索機能 -->
         </div>
         <hr>
         <table class="songList_table">
