@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+body {
+    font-family: Roboto;
+    background-image: url(../images/loginform.jpg);
+}
+
 .loginform {
     width: 400px;
     margin: 0 auto;
@@ -70,10 +75,6 @@ form .text-input {
     outline-style: none;
 }
 
-body {
-    font-family: Roboto;
-    background: #2b3640;
-}
 a {
     color: #3599FF;
     font-size: 1em;

@@ -11,19 +11,19 @@ $(function(){
             },
             dataType: 'json'
         }).done(function(data) {
-            $('.songData').remove();
+            $('tbody').empty();
             $.each(data, function(index,value) {
                 let song_id = value.song_id;
                 let artist_name = value.artist_name;
                 let song_title = value.song_title;
                 html = `
-                <tr class="songData">
+                <tr class="songData" data-href="/list/${song_id}">
                     <td>${song_id}</td>
                     <td>${artist_name}</td>
                     <td><a href="/list/${song_id}">${song_title}</a></td>
                 </tr>
                         `;
-                $('.songList_table').append(html);
+                $('tbody').append(html);
             })
         }).fail(function() {
             $('.seach_err').text('タイトルを入力してください。');

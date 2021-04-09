@@ -20,9 +20,9 @@
     </select><br>
     <label for="lyrics">歌詞</label><br>
     <textarea name="lyrics" id="lyrics" rows="17" cols="150">{{$list->lyrics}}</textarea><br>
-    <input type="submit" id="update" value="更新">
+    <input type="submit" id="update" class="update" value="更新">
 </form>
 <a href="{{route('detail.show',[
     'song_id' => $list->song_id
-])}}">キャンセル</a>
+])}}"　class="cancel">キャンセル</a>
 @endsection

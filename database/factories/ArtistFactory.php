@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Artist::class, function (Faker $faker) {
     return [
         'artist_name' => $faker->name,
-        'artist_image' => $faker->url
+        'artist_image' => $faker->url,
+        'updkbn' => 'A'
     ];
 });

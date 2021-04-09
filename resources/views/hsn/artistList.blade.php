@@ -1,7 +1,8 @@
 @extends('layout')
 @section('title','アーティスト一覧')
 @section('css','/css/artistList.css')
-@section('js','/js/artist_search.js')
+@section('js1','/js/artist_search.js')
+@section('js2','/js/artistListTable.js')
 @section('content')
     @if(session('err_msg'))
         <p class="text-danger">
@@ -27,20 +28,22 @@
         </div>
         <hr>
         <table class="artistList_table">
-            <tr>
-                <th>アーティストNo</th>
-                <th>アーティスト名</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>アーティストNo</th>
+                    <th>アーティスト名</th>
+                </tr>
+            </thead>
+            <tbody>
             @foreach($lists as $list)
-            <tr class="artistData">
-                <td>{{$list->artist_id}}</td>
-                <td>
-                    <a href="{{route('artistDetail.show',[
+            <tr class="artistData" data-href="{{route('artistDetail.show',[
                     'artist_id' => $list->artist_id
-                    ])}}">{{$list->artist_name}}</a>
-                </td>
+                    ])}}">
+                <td>{{$list->artist_id}}</td>
+                <td>{{$list->artist_name}}</td>
             </tr>
             @endforeach
+            </tbody>
         </table>
     </div>
 @endsection

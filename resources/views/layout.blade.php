@@ -30,15 +30,8 @@
             </main>
         </div>
 <script type="text/javascript" src="\js\jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="@yield('js')"></script>
-<script>
-function checkSubmit() {
-    if(window.confirm('更新してよろしいですか？')) {
-        return true;
-    } else {
-        return false;
-    }
-}
-</script>
+<script type="text/javascript" src="\js\global.js"></script>
+<script type="text/javascript" src="@yield('js1')"></script>
+<script type="text/javascript" src="@yield('js2')"></script>
 </body>
 </html>

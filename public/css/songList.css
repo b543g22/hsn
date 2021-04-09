@@ -19,12 +19,15 @@
     text-align: left;
     border-bottom: 1px #f2f2f2 solid;
     font-size: 15px;
+    width: 800px;
 }
 
 .songList_table tr td {
     color: #1d2b39;
     font-size: 20px;
     border-bottom: 1px #f2f2f2 solid;
+    width: 800px;
+    text-align: left;
 }
 
 .songList_table tr td a {
@@ -36,6 +39,16 @@
 
 .songList_table tr:nth-child(odd) {
     background-color:#eaedf0;
+}
+
+thead, tbody {
+    display: block;
+
+}
+
+tbody {
+    overflow: scroll;
+    height: 770px;
 }
 
 .songList_head {
@@ -77,4 +90,8 @@
 
 #search_song {
     border-style: solid;
+}
+
+.songData:hover {
+    cursor: pointer;
 }

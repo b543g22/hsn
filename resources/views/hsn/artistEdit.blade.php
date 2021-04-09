@@ -10,10 +10,9 @@
            minlength="1" maxlength="50" size="100"><br>
     <label for="artist_image">アーティスト写真</label><br>
     <input type="file" name="artist_image" id="artist_image"><br>
-    <input type="submit" id="update" value="更新">
+    <input type="submit" id="update" class="update" value="更新">
 </form>
 <a href="{{route('artistDetail.show',[
     'artist_id' => $artist->artist_id
-    ])}}">キャンセル</a>
-<!-- <a href="/artist/{{$artist->artist_id}}">キャンセル</a> -->
+    ])}}" class="cancel">キャンセル</a>
 @endsection

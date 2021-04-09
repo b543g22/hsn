@@ -14,7 +14,7 @@
         ])}}">編集</a>
         <a href="{{route('songDelete.exe',[
             'song_id' => $list->song_id
-        ])}}">削除</a>
+        ])}}" class="delete">削除</a>
         </div>
         <p class="title"><span>曲No</span></p>
         <p>{{$list->song_id}}</p><hr>
@@ -26,5 +26,4 @@
         <p>{{$list->lyrics}}</p><hr>
     </div>
     <a class="ichiran" href="{{route('list.show')}}">一覧へ戻る</a>
-
 @endsection

@@ -9,6 +9,7 @@ $factory->define(Song::class, function (Faker $faker) {
     return [
         'song_title' => $faker->word,
         'lyrics' => $faker->text,
-        'artist_id' => 5
+        'artist_id' => 5,
+        'updkbn' => 'A'
     ];
 });

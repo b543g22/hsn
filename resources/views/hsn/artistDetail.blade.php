@@ -14,7 +14,7 @@
             ])}}">編集</a>
             <a href="{{route('artistDelete.exe',[
                 'artist_id' => $artist->artist_id
-            ])}}">削除</a>
+            ])}}" class="delete">削除</a>
         </div>
         <p class="title"><span>アーティストNo</span></p>
         <p>{{$artist->artist_id}}</p><hr>

@@ -1,7 +1,8 @@
 @extends('layout')
 @section('title','曲一覧')
 @section('css','/css/songList.css')
-@section('js','/js/song_search.js')
+@section('js1','/js/song_search.js')
+@section('js2','/js/songListTable.js')
 @section('content')
     @if(session('err_msg'))
     <p class="text-danger">
@@ -27,20 +28,24 @@
         </div>
         <hr>
         <table class="songList_table">
-            <tr>
-                <th>曲No</th>
-                <th>アーティスト名</th>
-                <th>タイトル</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th id="title_song_id">曲No</th>
+                    <th id="title_artist_name">アーティスト名</th>
+                    <th id="title_song_title">タイトル</th>
+                </tr>
+            </thead>
+            <tbody>
             @foreach($lists as $list)
-            <tr class="songData">
+            <tr class="songData" data-href="{{route('detail.show',[
+                    'song_id' => $list->song_id
+                ])}}">
                 <td>{{$list->song_id}}</td>
                 <td>{{$list->artist_name}}</td>
-                <td><a href="{{route('detail.show',[
-                    'song_id' => $list->song_id
-                ])}}">{{$list->song_title}}</a></td>
+                <td>{{$list->song_title}}</a></td>
             </tr>
             @endforeach
+            </tbody>
         </table>
     </div>
 @endsection

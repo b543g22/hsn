@@ -19,12 +19,14 @@
     text-align: left;
     border-bottom: 1px #f2f2f2 solid;
     font-size: 15px;
+    width: 800px;
 }
 
 .artistList_table tr td {
     color: #1d2b39;
     font-size: 20px;
     border-bottom: 1px #f2f2f2 solid;
+    width: 800px;
 }
 
 .artistList_table tr td a {
@@ -36,6 +38,15 @@
 
 .artistList_table tr:nth-child(odd) {
     background-color:#eaedf0;
+}
+
+.artistList_table tbody, .artistList_table thead  {
+    display: block;
+}
+
+.artistList_table tbody {
+    overflow: scroll;
+    height: 770px;
 }
 
 .artistList_head {
@@ -77,4 +88,8 @@
 
 #search_artist {
     border-style: solid;
+}
+
+.artistData:hover {
+    cursor: pointer;
 }
