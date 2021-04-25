@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     //曲登録処理
     Route::post('/songStore','HsnController@exeSongStore')->name('songStore.exe');
     //音楽予測検索処理
-    Route::get('/list/index/{song_title}','HsnController@getSongSearch')->name('songSearch.get');
+    Route::post('/list/index','HsnController@getSongSearch')->name('songSearch.get');
 
     //アーティスト一覧画面
     Route::get('/artist','HsnController@showArtistList')->name('artistList.show');
@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/artistStore','HsnController@exeArtistStore')->name('artistStore.exe');
 
     //アーティスト予測検索処理
-    Route::get('/artistList/index/{artist_name}','HsnController@getArtistSearch')->name('artistSearch.get');
+    Route::post('/artistList/index','HsnController@getArtistSearch')->name('artistSearch.get');
 
     //ログアウト
     Route::post('logout','AuthController@exeLogout')->name('logout.exe');

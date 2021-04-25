@@ -4,8 +4,8 @@ $(function(){
         let artist_name = $('#search_artist').val();
 
         $.ajax({
-            type: 'GET',
-            url: '/artistList/index/' + artist_name,
+            type: 'POST',
+            url: '/artistList/index',
             data: {
                 'artist_name': artist_name,
             },

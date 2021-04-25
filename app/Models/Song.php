@@ -126,7 +126,8 @@ class Song extends Model {
      * @param string $song_title
      * @return array $songs
      */
-    public static function getSongName(string $song_title) {
+    public static function getSongName(array $inputs) {
+        $song_title = $inputs['song_title'];
         $songs = Song::select()
             ->join('artists','artists.artist_id','=','songs.artist_id')
             ->where('songs.updkbn','<>','D')

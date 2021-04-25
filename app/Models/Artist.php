@@ -124,11 +124,12 @@ class Artist extends Model {
     }
 
     /**
-     * 曲予測検索用データ
+     * アーティスト予測検索用データ
      * @param string $song_title
      * @return array $songs
      */
-    public static function getArtistName(string $artist_name) {
+    public static function getArtistName(array $inputs) {
+        $artist_name = $inputs['artist_name'];
         $artists = Artist::select()
             ->where('artists.updkbn','<>','D')
             ->where('artists.artist_name','like','%'.$artist_name.'%')

@@ -4,12 +4,15 @@ $(function(){
         let song_title = $('#search_song').val();
 
         $.ajax({
-            type: 'GET',
-            url: '/list/index/' + song_title,
+            type: 'POST',
+            url: '/list/index',
             data: {
                 'song_title': song_title,
             },
-            dataType: 'json'
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         }).done(function(data) {
             $('tbody').empty();
             $.each(data, function(index,value) {

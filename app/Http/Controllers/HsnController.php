@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Requests;
 use App\Http\Requests\UpdateRequest;
 use App\Http\Requests\ArtistUpdateRequest;
+use App\Http\Requests\SongSearchRequest;
+use App\Http\Requests\ArtistSearchRequest;
 use App\Models\Song;
 use App\Models\Artist;
+use Log;
 
 class HsnController extends Controller {
     /**
@@ -126,13 +129,15 @@ class HsnController extends Controller {
     /**
      * 曲予測検索処理
      * 
-     * @param string $song_name
+     * @param string $song_title
      * @return json
      */
-    public function getSongSearch(string $song_title) {
-        $songs = Song::getSongName($song_title);
+    public function getSongSearch(SongSearchRequest $request) {
+        $inputs = $request->all();
+        $songs = Song::getSongName($inputs);
         return response()->json($songs);
     }
+
 
     /**
      * アーティスト一覧画面表示
@@ -241,8 +246,9 @@ class HsnController extends Controller {
      * @param string $artist_name
      * @return json
      */
-    public function getArtistSearch(string $artist_name) {
-        $artists = Artist::getArtistName($artist_name);
+    public function getArtistSearch(ArtistSearchRequest $request) {
+        $inputs = $request->all();
+        $artists = Artist::getArtistName($inputs);
         return response()->json($artists);
     }
 }
